@@ -273,13 +273,13 @@
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
-                          <Component id="txtCateId1" min="-2" pref="240" max="-2" attributes="0"/>
+                          <Component id="txtCateName" min="-2" pref="240" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Component id="Slug" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txtCateId2" min="-2" pref="240" max="-2" attributes="0"/>
+                          <Component id="txtCateSlug" min="-2" pref="240" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="539" max="-2" attributes="0"/>
@@ -303,7 +303,7 @@
                           <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txtCateId1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="txtCateName" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -312,7 +312,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtCateId2" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txtCateSlug" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -343,14 +343,14 @@
             <Property name="text" type="java.lang.String" value="T&#xea;n lo&#x1ea1;i SP:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCateId1">
+        <Component class="javax.swing.JTextField" name="txtCateName">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="15" style="0"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCateId2">
+        <Component class="javax.swing.JTextField" name="txtCateSlug">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="15" style="0"/>

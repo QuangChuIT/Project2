@@ -36,13 +36,13 @@ public class UserJpaController implements Serializable {
 
     public void create(User user) {
         if (user.getRoleCollection() == null) {
-            user.setRoleCollection(new ArrayList<Role>());
+            user.setRoleCollection(new ArrayList<>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Collection<Role> attachedRoleCollection = new ArrayList<Role>();
+            Collection<Role> attachedRoleCollection = new ArrayList<>();
             for (Role roleCollectionRoleToAttach : user.getRoleCollection()) {
                 roleCollectionRoleToAttach = em.getReference(roleCollectionRoleToAttach.getClass(), roleCollectionRoleToAttach.getId());
                 attachedRoleCollection.add(roleCollectionRoleToAttach);

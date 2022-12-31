@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package vn.aptech.prject2.services;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 
 public abstract class AbstractFacade<T> {
-    private Class<T> entityClass;
+
+    private final Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -19,15 +21,55 @@ public abstract class AbstractFacade<T> {
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
-        getEntityManager().persist(entity);
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            em.persist(entity);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Error create entity: {0}", e.getMessage());
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+
     }
 
     public void edit(T entity) {
-        getEntityManager().merge(entity);
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            em.merge(entity);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Error edit entity: {0}", e.getMessage());
+            if (em != null) {
+                em.getTransaction().rollback();
+            }
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     public void remove(T entity) {
-        getEntityManager().remove(getEntityManager().merge(entity));
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            em.remove(em.merge(entity));
+            em.getTransaction().commit();
+        } catch(Exception e) {
+            LOGGER.log(Level.SEVERE, "Error remove entity: {0}", e.getMessage());
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     public T find(Object id) {
@@ -56,4 +98,6 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
+
+    private final static Logger LOGGER = Logger.getLogger(AbstractFacade.class.getName());
 }

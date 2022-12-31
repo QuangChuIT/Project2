@@ -6,7 +6,6 @@
 package vn.aptech.prject2.services;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import vn.aptech.entities.User;
 import vn.aptech.project2.utils.JPAUtils;

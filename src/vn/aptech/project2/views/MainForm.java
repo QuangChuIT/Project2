@@ -49,8 +49,8 @@ public class MainForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtCateId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtCateId1 = new javax.swing.JTextField();
-        txtCateId2 = new javax.swing.JTextField();
+        txtCateName = new javax.swing.JTextField();
+        txtCateSlug = new javax.swing.JTextField();
         Slug = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnLogout = new javax.swing.JMenu();
@@ -174,9 +174,9 @@ public class MainForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel2.setText("Tên loại SP:");
 
-        txtCateId1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtCateName.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
 
-        txtCateId2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        txtCateSlug.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
 
         Slug.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         Slug.setText("Slug: ");
@@ -196,12 +196,12 @@ public class MainForm extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jLabel2)
                         .addGap(16, 16, 16)
-                        .addComponent(txtCateId1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCateName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(Slug)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCateId2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCateSlug, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(539, 539, 539))
         );
         jPanel2Layout.setVerticalGroup(
@@ -218,14 +218,14 @@ public class MainForm extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel2))
-                    .addComponent(txtCateId1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCateName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(Slug))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(txtCateId2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtCateSlug, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 11, 894, 227));
@@ -279,8 +279,14 @@ public class MainForm extends javax.swing.JFrame {
        DefaultTableModel dfDefaultTableModel = (DefaultTableModel) tblCategories.getModel();
        Long cateId = Long.parseLong(dfDefaultTableModel.getValueAt(tblCategories.getSelectedRow(), 0).toString());
        System.out.println("+++++++++++++++++: " + cateId);
+       this.displayDetailCategory(cateId);
     }//GEN-LAST:event_tblCategoriesMouseClicked
-
+    private void displayDetailCategory(long cateId) {
+       Category category = categoryService.find(cateId);
+       this.txtCateId.setText(String.valueOf(category.getId()));
+       this.txtCateName.setText(category.getTitle());
+       this.txtCateSlug.setText(category.getSlug());
+    }
     /**
      * @param args the command line arguments
      */
@@ -336,7 +342,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenu mnLogout;
     private javax.swing.JTable tblCategories;
     private javax.swing.JTextField txtCateId;
-    private javax.swing.JTextField txtCateId1;
-    private javax.swing.JTextField txtCateId2;
+    private javax.swing.JTextField txtCateName;
+    private javax.swing.JTextField txtCateSlug;
     // End of variables declaration//GEN-END:variables
 }

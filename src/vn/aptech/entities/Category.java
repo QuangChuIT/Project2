@@ -56,8 +56,6 @@ public class Category implements Serializable {
     @Column(name = "modified_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedDate;
-    @OneToMany(mappedBy = "categoryId")
-    private Collection<Group> groupCollection;
 
     public Category() {
     }
@@ -109,15 +107,6 @@ public class Category implements Serializable {
 
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
-    }
-
-    @XmlTransient
-    public Collection<Group> getGroupCollection() {
-        return groupCollection;
-    }
-
-    public void setGroupCollection(Collection<Group> group1Collection) {
-        this.groupCollection = group1Collection;
     }
 
     @Override
